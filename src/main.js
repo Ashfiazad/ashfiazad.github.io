@@ -1,16 +1,17 @@
 import './style.css'
 
-// 1. Dismissible Spotlight Alert
+// ===== 1. Dismissible Spotlight Alert =====
 const alertBox = document.getElementById('spotlight-alert')
 const closeAlertBtn = document.getElementById('close-alert')
 if (closeAlertBtn && alertBox) {
   closeAlertBtn.addEventListener('click', () => {
     alertBox.style.marginTop = `-${alertBox.offsetHeight}px`
+    alertBox.style.opacity = '0'
     setTimeout(() => alertBox.remove(), 300)
   })
 }
 
-// 2. Mobile Menu Toggle
+// ===== 2. Mobile Menu Toggle =====
 const mobileBtn = document.getElementById('mobile-menu-btn')
 const mobileNav = document.getElementById('mobile-nav')
 if (mobileBtn && mobileNav) {
@@ -18,8 +19,6 @@ if (mobileBtn && mobileNav) {
     mobileNav.classList.toggle('hidden')
     mobileNav.classList.toggle('flex')
   })
-  
-  // Close menu on link click
   mobileNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       mobileNav.classList.add('hidden')
@@ -28,13 +27,88 @@ if (mobileBtn && mobileNav) {
   })
 }
 
-// 3. Set dynamic year in footer
+// ===== 3. Set dynamic year =====
 const yearEl = document.getElementById('year')
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear()
-}
+if (yearEl) yearEl.textContent = new Date().getFullYear()
 
-// Mock Data
+// ===== 4. Scroll-triggered reveal animations =====
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('revealed')
+      revealObserver.unobserve(entry.target)
+    }
+  })
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' })
+
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
+  revealObserver.observe(el)
+})
+
+// ===== 5. Active nav link highlighting on scroll =====
+const navLinks = document.querySelectorAll('.nav-link')
+const sections = document.querySelectorAll('section[id]')
+
+const activateNavOnScroll = () => {
+  const scrollY = window.scrollY + 120
+
+  sections.forEach(section => {
+    const top = section.offsetTop
+    const height = section.offsetHeight
+    const id = section.getAttribute('id')
+    
+    if (scrollY >= top && scrollY < top + height) {
+      navLinks.forEach(link => {
+        link.classList.remove('active')
+        if (link.getAttribute('href') === `#${id}`) {
+          link.classList.add('active')
+        }
+      })
+    }
+  })
+}
+window.addEventListener('scroll', activateNavOnScroll, { passive: true })
+activateNavOnScroll()
+
+// ===== 6. Header shadow on scroll =====
+const header = document.getElementById('site-header')
+const handleHeaderScroll = () => {
+  if (window.scrollY > 50) {
+    header?.classList.add('scrolled')
+  } else {
+    header?.classList.remove('scrolled')
+  }
+}
+window.addEventListener('scroll', handleHeaderScroll, { passive: true })
+
+// ===== 7. Hero parallax =====
+const heroBg = document.getElementById('hero-bg')
+const heroSection = document.getElementById('home')
+const handleParallax = () => {
+  if (!heroBg || !heroSection) return
+  const rect = heroSection.getBoundingClientRect()
+  if (rect.bottom > 0) {
+    const scrolled = -rect.top * 0.3
+    heroBg.style.transform = `translateY(${scrolled}px) scale(1.1)`
+  }
+}
+window.addEventListener('scroll', handleParallax, { passive: true })
+
+// ===== 8. Back to top button =====
+const backToTop = document.getElementById('back-to-top')
+const handleBackToTop = () => {
+  if (window.scrollY > 600) {
+    backToTop?.classList.add('visible')
+  } else {
+    backToTop?.classList.remove('visible')
+  }
+}
+window.addEventListener('scroll', handleBackToTop, { passive: true })
+backToTop?.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+})
+
+// ===== Mock Data =====
 const portfolioData = [
   { id: 1, type: 'painting', title: 'Urban Decay', desc: 'Oil on canvas, 24x36"', img: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
   { id: 2, type: 'digital', title: 'Neon Dreams', desc: 'Digital Illustration', img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
@@ -62,18 +136,21 @@ const storeData = [
   { id: 104, title: 'Neon Dreams - Print', price: '$120', type: 'Print', img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' }
 ]
 
-// 4. Render Events
+// ===== 9. Render Events =====
 const renderEvents = (events, containerId) => {
   const container = document.getElementById(containerId)
   if (!container) return
   
   events.forEach(ev => {
     const el = document.createElement('div')
-    el.className = 'flex flex-col sm:flex-row sm:justify-between sm:items-baseline border-b border-gray-100 pb-4'
+    el.className = 'event-item flex flex-col sm:flex-row sm:justify-between sm:items-baseline border-b border-gray-100 pb-4 cursor-default'
     el.innerHTML = `
       <div>
         <h4 class="font-bold text-lg text-brand-dark">${ev.title}</h4>
-        <p class="text-sm italic">${ev.location}</p>
+        <p class="text-sm text-gray-500 italic mt-1 flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          ${ev.location}
+        </p>
       </div>
       <div class="mt-2 sm:mt-0 font-mono text-sm tracking-wider uppercase text-brand-accent">${ev.date}</div>
     `
@@ -83,54 +160,61 @@ const renderEvents = (events, containerId) => {
 renderEvents(upcomingEvents, 'upcoming-events')
 renderEvents(pastEvents, 'past-events')
 
-
-// 5. Render Store
-const storeGrid = document.getElementById('store-grid')
-if (storeGrid) {
-  storeData.forEach(item => {
-    const el = document.createElement('div')
-    el.className = 'bg-gray-800 rounded overflow-hidden group'
-    el.innerHTML = `
-      <div class="relative h-48 overflow-hidden">
-        <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-        <div class="absolute top-2 right-2 bg-white text-brand-dark text-xs font-bold px-2 py-1 uppercase rounded">${item.type}</div>
-      </div>
-      <div class="p-4">
-        <h4 class="font-bold mb-1">${item.title}</h4>
-        <p class="text-brand-accent mb-4">${item.price}</p>
-        <button class="w-full bg-white text-brand-dark font-bold py-2 hover:bg-brand-accent hover:text-white transition-colors" onclick="showToast('Added ${item.title} to cart')">Add to Cart</button>
-      </div>
-    `
-    storeGrid.appendChild(el)
-  })
+// ===== 10. Render Store (split by category) =====
+const renderStoreItem = (item) => {
+  const el = document.createElement('div')
+  el.className = 'bg-gray-800/80 rounded-xl overflow-hidden group border border-gray-700/50 hover:border-brand-accent/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-accent/10'
+  el.innerHTML = `
+    <div class="relative h-56 overflow-hidden">
+      <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+      <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-brand-dark text-xs font-bold px-3 py-1 uppercase rounded-full tracking-wider">${item.type}</div>
+    </div>
+    <div class="p-5">
+      <h4 class="font-bold mb-1 text-white">${item.title}</h4>
+      <p class="text-brand-accent font-semibold text-lg mb-4">${item.price}</p>
+      <button class="w-full bg-white/10 backdrop-blur-sm text-white font-semibold py-2.5 rounded-lg border border-white/20 hover:bg-brand-accent hover:text-brand-dark hover:border-brand-accent transition-all duration-300" onclick="showToast('Added ${item.title} to cart')">Add to Cart</button>
+    </div>
+  `
+  return el
 }
 
-// 6. Toast Notification
+const storeOriginals = document.getElementById('store-originals')
+const storePrints = document.getElementById('store-prints')
+
+storeData.forEach(item => {
+  if (item.type === 'Original' && storeOriginals) {
+    storeOriginals.appendChild(renderStoreItem(item))
+  } else if (item.type === 'Print' && storePrints) {
+    storePrints.appendChild(renderStoreItem(item))
+  }
+})
+
+// ===== 11. Toast Notification =====
 window.showToast = (message) => {
   const container = document.getElementById('toast-container')
   if (!container) return
   
   const toast = document.createElement('div')
-  toast.className = 'bg-brand-dark text-white px-6 py-3 rounded shadow-lg transform translate-y-10 opacity-0 transition-all duration-300 flex items-center gap-3'
+  toast.className = 'bg-brand-dark text-white px-6 py-3.5 rounded-xl shadow-2xl transform translate-y-10 opacity-0 transition-all duration-300 flex items-center gap-3 border border-gray-700'
   toast.innerHTML = `
-    <svg class="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-    <span>${message}</span>
+    <div class="w-6 h-6 rounded-full bg-brand-accent/20 flex items-center justify-center flex-shrink-0">
+      <svg class="w-4 h-4 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+    </div>
+    <span class="text-sm">${message}</span>
   `
   container.appendChild(toast)
   
-  // Animate in
   setTimeout(() => {
     toast.classList.remove('translate-y-10', 'opacity-0')
   }, 10)
   
-  // Animate out
   setTimeout(() => {
     toast.classList.add('opacity-0', 'translate-y-2')
     setTimeout(() => toast.remove(), 300)
   }, 3000)
 }
 
-// 7. Portfolio Filtering & Rendering
+// ===== 12. Portfolio Filtering & Rendering =====
 const portfolioGrid = document.getElementById('portfolio-grid')
 const filterBtns = document.querySelectorAll('.filter-btn')
 
@@ -145,47 +229,42 @@ const renderPortfolio = (filter = 'all') => {
     
   filteredData.forEach((item, index) => {
     const el = document.createElement('div')
-    // Masonry effect alternative using different heights based on index
     const heightClass = index % 3 === 0 ? 'h-80' : (index % 2 === 0 ? 'h-64' : 'h-72')
     
-    el.className = `relative ${heightClass} rounded-lg overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1`
+    el.className = `portfolio-item relative ${heightClass} rounded-xl overflow-hidden group cursor-pointer shadow-md hover:shadow-2xl transition-shadow duration-300`
+    el.style.opacity = '0' // Start hidden for animation
     el.innerHTML = `
-      <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-        <h3 class="text-white font-serif text-xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300">${item.title}</h3>
-        <p class="text-gray-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">${item.desc}</p>
+      <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+        <span class="text-brand-accent text-xs uppercase tracking-[0.2em] font-semibold mb-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">${item.type}</span>
+        <h3 class="text-white font-serif text-2xl font-bold translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">${item.title}</h3>
+        <p class="text-gray-300 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100">${item.desc}</p>
       </div>
     `
     
-    // Open modal on click
     el.addEventListener('click', () => openModal(item))
-    
     portfolioGrid.appendChild(el)
   })
 }
 
-// Initialize portfolio
 renderPortfolio()
 
-// Filter logic
 filterBtns.forEach(btn => {
   btn.addEventListener('click', (e) => {
-    // Reset active states
     filterBtns.forEach(b => {
-      b.classList.remove('bg-brand-dark', 'text-white')
+      b.classList.remove('bg-brand-dark', 'text-white', 'shadow-sm')
       b.classList.add('bg-white', 'text-brand-dark')
     })
     
-    // Set current active
     const target = e.currentTarget
     target.classList.remove('bg-white', 'text-brand-dark')
-    target.classList.add('bg-brand-dark', 'text-white')
+    target.classList.add('bg-brand-dark', 'text-white', 'shadow-sm')
     
     renderPortfolio(target.dataset.filter)
   })
 })
 
-// 8. Modal Logic
+// ===== 13. Modal Logic =====
 const modal = document.getElementById('portfolio-modal')
 const closeModalBtn = document.getElementById('close-modal')
 const modalImg = document.getElementById('modal-img')
@@ -201,7 +280,6 @@ const openModal = (item) => {
   modalMeta.textContent = item.type
   
   modal.classList.remove('hidden')
-  // trigger reflow
   void modal.offsetWidth
   modal.classList.remove('opacity-0')
   modalContent.classList.remove('scale-95')

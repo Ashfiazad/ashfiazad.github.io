@@ -16,7 +16,7 @@ body {
   @apply bg-brand-light text-brand-dark font-sans;
 }
 
-/* Custom scrollbar for masonry/modals if needed */
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -26,4 +26,164 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--color-brand-dark);
   border-radius: 4px;
+}
+
+/* ===== Scroll-triggered fade-in animations ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-stagger.revealed > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger.revealed > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger.revealed > *:nth-child(2) { transition-delay: 100ms; }
+.reveal-stagger.revealed > *:nth-child(3) { transition-delay: 200ms; }
+.reveal-stagger.revealed > *:nth-child(4) { transition-delay: 300ms; }
+.reveal-stagger.revealed > *:nth-child(5) { transition-delay: 400ms; }
+.reveal-stagger.revealed > *:nth-child(6) { transition-delay: 500ms; }
+
+/* ===== Hero entrance animations ===== */
+.hero-title {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+.hero-subtitle {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+.hero-cta {
+  opacity: 0;
+  transform: translateY(20px) scale(0.95);
+  animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== Scroll indicator bounce ===== */
+.scroll-indicator {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* ===== Portfolio filter animation ===== */
+.portfolio-item {
+  animation: portfolioFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.portfolio-item:nth-child(1) { animation-delay: 0ms; }
+.portfolio-item:nth-child(2) { animation-delay: 80ms; }
+.portfolio-item:nth-child(3) { animation-delay: 160ms; }
+.portfolio-item:nth-child(4) { animation-delay: 240ms; }
+.portfolio-item:nth-child(5) { animation-delay: 320ms; }
+.portfolio-item:nth-child(6) { animation-delay: 400ms; }
+
+@keyframes portfolioFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== Active nav link ===== */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-brand-accent);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+.nav-link.active {
+  color: var(--color-brand-accent);
+}
+.nav-link.active::after {
+  width: 100%;
+  left: 0;
+}
+
+/* ===== Back to top button ===== */
+#back-to-top {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(10px);
+}
+#back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* ===== Event item hover ===== */
+.event-item {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  border-radius: 8px;
+  padding: 16px;
+  margin: -16px;
+  margin-bottom: 8px;
+}
+.event-item:hover {
+  transform: translateX(6px);
+  background-color: rgba(212, 175, 55, 0.06);
+}
+
+/* ===== CTA shimmer ===== */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* ===== Header shadow on scroll ===== */
+header.scrolled {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border-color: transparent;
 }
