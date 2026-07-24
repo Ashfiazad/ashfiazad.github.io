@@ -1,13 +1,255 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ashfiazad.github.io</title>
+    <title>Artist Portfolio | Modern Art</title>
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   </head>
-  <body>
-    <div id="app"></div>
+  <body class="bg-brand-light text-brand-dark font-sans relative">
+    
+    <!-- Spotlight Alert -->
+    <div id="spotlight-alert" class="bg-brand-accent text-brand-dark px-4 py-2 flex justify-between items-center transition-all duration-300">
+      <span class="text-sm font-semibold mx-auto">Latest Update: New Exhibition in London!</span>
+      <button id="close-alert" class="text-brand-dark hover:opacity-70 font-bold px-2 py-1" aria-label="Close alert">&times;</button>
+    </div>
+
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 bg-brand-light/90 backdrop-blur-md border-b border-gray-200">
+      <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#home" class="font-serif text-2xl font-bold tracking-tight text-brand-dark">
+          <span class="text-brand-accent">A</span>rtist<span class="text-brand-accent">N</span>ame
+        </a>
+        
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex space-x-6 text-sm uppercase tracking-widest font-semibold">
+          <a href="#home" class="hover:text-brand-accent transition-colors">Home</a>
+          <a href="#about" class="hover:text-brand-accent transition-colors">About</a>
+          <a href="#portfolio" class="hover:text-brand-accent transition-colors">Portfolio</a>
+          <a href="#events" class="hover:text-brand-accent transition-colors">Events</a>
+          <a href="#news" class="hover:text-brand-accent transition-colors">News</a>
+          <a href="#store" class="hover:text-brand-accent transition-colors">Store</a>
+          <a href="#contact" class="hover:text-brand-accent transition-colors">Contact</a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden flex flex-col space-y-1">
+          <span class="w-6 h-0.5 bg-brand-dark"></span>
+          <span class="w-6 h-0.5 bg-brand-dark"></span>
+          <span class="w-6 h-0.5 bg-brand-dark"></span>
+        </button>
+      </div>
+      
+      <!-- Mobile Nav Dropdown -->
+      <nav id="mobile-nav" class="hidden flex-col bg-brand-light border-b border-gray-200 px-6 py-4 space-y-4 md:hidden">
+        <a href="#home" class="block hover:text-brand-accent transition-colors">Home</a>
+        <a href="#about" class="block hover:text-brand-accent transition-colors">About</a>
+        <a href="#portfolio" class="block hover:text-brand-accent transition-colors">Portfolio</a>
+        <a href="#events" class="block hover:text-brand-accent transition-colors">Events</a>
+        <a href="#news" class="block hover:text-brand-accent transition-colors">News</a>
+        <a href="#store" class="block hover:text-brand-accent transition-colors">Store</a>
+        <a href="#contact" class="block hover:text-brand-accent transition-colors">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Section (HOME) -->
+      <section id="home" class="relative h-[80vh] flex items-center justify-center bg-gray-900 overflow-hidden">
+        <!-- Mock high-res image background -->
+        <img src="https://images.unsplash.com/photo-1543857778-c4a1a3e0b2eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Featured Artwork" class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay">
+        <div class="relative z-10 text-center text-white px-4">
+          <h1 class="font-serif text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">Echoes of Silence</h1>
+          <p class="text-xl md:text-2xl font-light tracking-wide mb-8">The Latest Collection by ArtistName</p>
+          <a href="#portfolio" class="inline-block bg-brand-accent text-brand-dark px-8 py-3 rounded-full font-semibold hover:bg-yellow-500 transition-transform hover:scale-105">View Collection</a>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-6xl">
+          <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+              <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Artist Portrait" class="rounded-lg shadow-xl grayscale hover:grayscale-0 transition-all duration-500">
+            </div>
+            <div class="md:w-1/2">
+              <h2 class="font-serif text-4xl font-bold mb-6 relative inline-block">
+                About the Artist
+                <span class="absolute bottom-0 left-0 w-1/2 h-1 bg-brand-accent"></span>
+              </h2>
+              <p class="text-gray-700 leading-relaxed mb-6">
+                Born in 1990, ArtistName is a contemporary painter known for their evocative abstract works. Their unique approach blends traditional techniques with modern themes, exploring the intersection of nature and urban life.
+              </p>
+              <p class="text-gray-700 leading-relaxed mb-8">
+                With a background in fine arts from the Royal College of Art, their work has been exhibited internationally and featured in numerous prestigious collections.
+              </p>
+              <a href="placeholder-cv.pdf" target="_blank" class="inline-flex items-center space-x-2 border-2 border-brand-dark px-6 py-3 font-semibold hover:bg-brand-dark hover:text-white transition-colors">
+                <span>Download CV</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfolio Section -->
+      <section id="portfolio" class="py-20 bg-brand-light">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-12">
+            <h2 class="font-serif text-4xl font-bold mb-4">Recent Works</h2>
+            <div id="portfolio-filters" class="flex flex-wrap justify-center gap-4">
+              <button class="filter-btn active px-4 py-2 bg-brand-dark text-white rounded-full text-sm font-semibold" data-filter="all">All</button>
+              <button class="filter-btn px-4 py-2 bg-white text-brand-dark border border-gray-300 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors" data-filter="painting">Painting</button>
+              <button class="filter-btn px-4 py-2 bg-white text-brand-dark border border-gray-300 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors" data-filter="digital">Digital</button>
+              <button class="filter-btn px-4 py-2 bg-white text-brand-dark border border-gray-300 rounded-full text-sm font-semibold hover:bg-gray-100 transition-colors" data-filter="sketch">Sketch</button>
+            </div>
+          </div>
+          
+          <!-- Masonry-style Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+            <!-- Items generated by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Events Section -->
+      <section id="events" class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+          <h2 class="font-serif text-4xl font-bold text-center mb-16">Exhibitions & Events</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            
+            <!-- Upcoming -->
+            <div>
+              <h3 class="text-2xl font-bold mb-6 border-b-2 border-brand-accent inline-block pb-2">Upcoming Shows</h3>
+              <div class="space-y-6" id="upcoming-events">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <!-- Past -->
+            <div>
+              <h3 class="text-2xl font-bold mb-6 border-b-2 border-gray-300 inline-block pb-2">Past Exhibitions</h3>
+              <div class="space-y-6 text-gray-500" id="past-events">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- News / Blog Section -->
+      <section id="news" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+          <h2 class="font-serif text-4xl font-bold text-center mb-12">News & Updates</h2>
+          
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Featured Article (Takes up 2 columns on large screens) -->
+            <article class="lg:col-span-2 bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group cursor-pointer">
+              <div class="relative h-64 md:h-80 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Studio Visit" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute top-4 left-4 bg-brand-accent text-xs font-bold px-3 py-1 uppercase rounded">Featured</div>
+              </div>
+              <div class="p-8">
+                <p class="text-sm text-gray-500 mb-2">March 15, 2026</p>
+                <h3 class="font-serif text-3xl font-bold mb-4 group-hover:text-brand-accent transition-colors">Behind the Scenes: My New Studio</h3>
+                <p class="text-gray-600 line-clamp-3">Join me as I explore the new creative space that will birth the upcoming 'Echoes' collection. The natural light and open layout have already begun to influence my brushstrokes.</p>
+                <span class="inline-block mt-4 text-brand-dark font-semibold group-hover:underline">Read More &rarr;</span>
+              </div>
+            </article>
+
+            <!-- Older Updates List -->
+            <div class="flex flex-col space-y-6">
+              <article class="bg-white rounded-lg p-6 shadow hover:shadow-md transition-shadow cursor-pointer">
+                <p class="text-xs text-brand-accent font-bold mb-1">February 20, 2026</p>
+                <h4 class="font-serif text-xl font-bold mb-2">Winner of the Contemporary Arts Prize</h4>
+                <p class="text-sm text-gray-600 line-clamp-2">Honored to receive this prestigious award in recognition of my work over the past decade.</p>
+              </article>
+              <article class="bg-white rounded-lg p-6 shadow hover:shadow-md transition-shadow cursor-pointer">
+                <p class="text-xs text-brand-accent font-bold mb-1">January 5, 2026</p>
+                <h4 class="font-serif text-xl font-bold mb-2">Print Release: Limited Edition</h4>
+                <p class="text-sm text-gray-600 line-clamp-2">A small batch of archival prints from the 'Nature Morte' series are now available.</p>
+              </article>
+              <article class="bg-white rounded-lg p-6 shadow hover:shadow-md transition-shadow cursor-pointer flex-grow flex flex-col justify-center items-center text-center">
+                <span class="text-brand-dark font-bold">View All Posts</span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Store Section -->
+      <section id="store" class="py-20 bg-brand-dark text-white">
+        <div class="container mx-auto px-6">
+          <div class="text-center mb-12">
+            <h2 class="font-serif text-4xl font-bold mb-4 text-white">The Store</h2>
+            <p class="text-gray-400">Originals and Limited Edition Prints</p>
+          </div>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6" id="store-grid">
+            <!-- Store Items injected by JS -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-white pt-20 pb-10 border-t border-gray-200">
+      <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16 text-center md:text-left">
+          
+          <!-- Contact Info -->
+          <div>
+            <h3 class="font-serif text-2xl font-bold mb-4">Contact</h3>
+            <p class="text-gray-600 mb-2">For inquiries and commissions:</p>
+            <a href="mailto:hello@artistname.com" class="text-brand-dark font-semibold hover:text-brand-accent">hello@artistname.com</a>
+          </div>
+
+          <!-- Socials -->
+          <div class="flex flex-col items-center md:items-start">
+            <h3 class="font-serif text-2xl font-bold mb-4">Follow</h3>
+            <div class="flex space-x-4">
+              <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">IG</a>
+              <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">FB</a>
+              <a href="#" class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-brand-accent hover:text-white transition-colors">X</a>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div>
+            <h3 class="font-serif text-2xl font-bold mb-4">Newsletter</h3>
+            <p class="text-gray-600 mb-4 text-sm">Subscribe to receive updates on new releases and exhibitions.</p>
+            <form class="flex" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+              <input type="email" placeholder="Your email address" class="px-4 py-2 border border-gray-300 rounded-l-md w-full focus:outline-none focus:border-brand-accent" required>
+              <button type="submit" class="bg-brand-dark text-white px-4 py-2 rounded-r-md font-semibold hover:bg-brand-accent transition-colors">Join</button>
+            </form>
+          </div>
+        </div>
+        
+        <div class="text-center text-sm text-gray-400 border-t border-gray-100 pt-8">
+          &copy; <span id="year"></span> ArtistName. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Portfolio Modal -->
+    <div id="portfolio-modal" class="fixed inset-0 z-[100] bg-black/90 hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
+      <button id="close-modal" class="absolute top-6 right-6 text-white hover:text-brand-accent text-4xl leading-none">&times;</button>
+      <div class="max-w-4xl w-full p-4 flex flex-col md:flex-row items-center gap-8 transform scale-95 transition-transform duration-300" id="modal-content">
+        <img id="modal-img" src="" alt="Artwork full size" class="max-h-[70vh] w-auto object-contain rounded shadow-2xl">
+        <div class="text-white">
+          <h3 id="modal-title" class="font-serif text-3xl font-bold mb-2"></h3>
+          <p id="modal-desc" class="text-gray-300 mb-4"></p>
+          <div class="text-sm text-brand-accent font-semibold tracking-widest uppercase" id="modal-meta"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-4 right-4 z-50 flex flex-col space-y-2"></div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
