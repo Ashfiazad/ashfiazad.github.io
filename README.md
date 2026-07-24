@@ -1,4 +1,4 @@
-# Artist Portfolio Website
+# Hafsa Binta Azad - Artist Portfolio
 
 A responsive, modern, single-page portfolio website for an upcoming artist, built with Vanilla JavaScript, HTML, and Tailwind CSS.
 
