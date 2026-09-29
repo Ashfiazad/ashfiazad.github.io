@@ -122,12 +122,190 @@ backToTop?.addEventListener('click', () => {
 
 // ===== Mock Data =====
 const portfolioData = [
-  { id: 1, type: 'painting', title: 'Urban Decay', desc: 'Oil on canvas, 24×36″', img: '/images/portfolio/urban-decay.jpg' },
-  { id: 2, type: 'digital', title: 'Neon Dreams', desc: 'Digital Illustration', img: '/images/portfolio/neon-dreams.jpg' },
-  { id: 3, type: 'painting', title: 'Serenity', desc: 'Acrylic on wood, 18×24″', img: '/images/portfolio/serenity.jpg' },
-  { id: 4, type: 'sketch', title: 'Study of Hands', desc: 'Charcoal on paper', img: '/images/portfolio/study-of-hands.jpg' },
-  { id: 5, type: 'digital', title: 'Cyber City', desc: 'Digital 3D render', img: '/images/portfolio/cyber-city.jpg' },
-  { id: 6, type: 'painting', title: 'Abstract Thought', desc: 'Mixed media on canvas', img: '/images/portfolio/abstract-thought.jpg' }
+    {
+        id: 1,
+        title: 'Aftermath',
+        type: 'painting',
+        img: '/images/portfolio/aftermath.jpg',
+        desc: 'Aftermath - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 2,
+        title: 'Concrete Root',
+        type: 'mixed-media',
+        img: '/images/portfolio/concrete-root.jpg',
+        desc: 'Concrete Root - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 3,
+        title: 'Fault Lines',
+        type: 'painting',
+        img: '/images/portfolio/fault-lines.jpg',
+        desc: 'Fault Lines - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 4,
+        title: 'Liminal Presence',
+        type: 'mixed-media',
+        img: '/images/portfolio/liminal-presence.jpg',
+        desc: 'Liminal Presence - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 5,
+        title: 'Living Off, Living On',
+        type: 'mixed-media',
+        img: '/images/portfolio/living-off.jpg',
+        desc: 'Living Off, Living On - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 6,
+        title: 'Primordial',
+        type: 'painting',
+        img: '/images/portfolio/primordial.jpg',
+        desc: 'Primordial - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 7,
+        title: 'Ruins',
+        type: 'painting',
+        img: '/images/portfolio/ruins.jpg',
+        desc: 'Ruins - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 8,
+        title: 'Screen Empathy',
+        type: 'painting',
+        img: '/images/portfolio/screen-empathy.jpg',
+        desc: 'Screen Empathy - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 9,
+        title: 'The Ultimate Portrait',
+        type: 'portrait',
+        img: '/images/portfolio/tagore-portrait.jpg',
+        desc: 'The Ultimate Portrait - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 10,
+        title: 'Unseen',
+        type: 'mixed-media',
+        img: '/images/portfolio/unseen.jpg',
+        desc: 'Unseen - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 11,
+        title: 'War Code',
+        type: 'painting',
+        img: '/images/portfolio/war-code.jpg',
+        desc: 'War Code - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 12,
+        title: 'Fragments',
+        type: 'mixed-media',
+        img: '/images/portfolio/ep.jpg',
+        desc: 'Fragments - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 13,
+        title: 'Tangled Strings',
+        type: 'portrait',
+        img: '/images/portfolio/pp.jpg',
+        desc: 'Tangled Strings - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 14,
+        title: 'Monument Park',
+        type: 'landscape',
+        img: '/images/portfolio/land.jpg',
+        desc: 'Monument Park - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 15,
+        title: 'Still Life with Vases',
+        type: 'still-life',
+        img: '/images/portfolio/still-life-1.jpg',
+        desc: 'Still Life with Vases - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 16,
+        title: 'Still Life with Fruits',
+        type: 'still-life',
+        img: '/images/portfolio/still-life-2.jpg',
+        desc: 'Still Life with Fruits - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 17,
+        title: 'Business Burden',
+        type: 'mixed-media',
+        img: '/images/portfolio/kk.jpg',
+        desc: 'Business Burden - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 18,
+        title: 'Crimson Horizon',
+        type: 'painting',
+        img: '/images/portfolio/crimson-horizon.jpg',
+        desc: 'Crimson Horizon - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 19,
+        title: 'Glimpse',
+        type: 'mixed-media',
+        img: '/images/portfolio/glimpse.jpg',
+        desc: 'Glimpse - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 20,
+        title: 'Fragments II',
+        type: 'mixed-media',
+        img: '/images/portfolio/fragments-ii.jpg',
+        desc: 'Fragments II - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 21,
+        title: 'Core',
+        type: 'mixed-media',
+        img: '/images/portfolio/core.jpg',
+        desc: 'Core - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 22,
+        title: 'The Voice (Tagore)',
+        type: 'mixed-media',
+        img: '/images/portfolio/the-voice.jpg',
+        desc: 'The Voice (Tagore) - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    },
+    {
+        id: 23,
+        title: 'Urban Canvas',
+        type: 'mixed-media',
+        img: '/images/portfolio/urban-canvas.jpg',
+        desc: 'Urban Canvas - Ashfi Azad',
+        medium: 'Mixed Media/Painting'
+    }
 ]
 
 const upcomingEvents = [
@@ -142,10 +320,190 @@ const pastEvents = [
 ]
 
 const storeData = [
-  { id: 101, title: 'Echoes — Original', price: '$2,500', type: 'Original', img: '/images/hero-bg.jpg' },
-  { id: 102, title: 'Serenity — Print', price: '$150', type: 'Print', img: '/images/portfolio/serenity.jpg' },
-  { id: 103, title: 'Urban Decay — Print', price: '$150', type: 'Print', img: '/images/portfolio/urban-decay.jpg' },
-  { id: 104, title: 'Neon Dreams — Print', price: '$120', type: 'Print', img: '/images/portfolio/neon-dreams.jpg' }
+    {
+        id: 1,
+        title: 'Aftermath (Print)',
+        price: '$160.00',
+        img: '/images/portfolio/aftermath.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Aftermath" on archival paper.'
+    },
+    {
+        id: 2,
+        title: 'Concrete Root (Print)',
+        price: '$170.00',
+        img: '/images/portfolio/concrete-root.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Concrete Root" on archival paper.'
+    },
+    {
+        id: 3,
+        title: 'Fault Lines (Print)',
+        price: '$180.00',
+        img: '/images/portfolio/fault-lines.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Fault Lines" on archival paper.'
+    },
+    {
+        id: 4,
+        title: 'Liminal Presence (Print)',
+        price: '$190.00',
+        img: '/images/portfolio/liminal-presence.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Liminal Presence" on archival paper.'
+    },
+    {
+        id: 5,
+        title: 'Living Off, Living On (Print)',
+        price: '$200.00',
+        img: '/images/portfolio/living-off.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Living Off, Living On" on archival paper.'
+    },
+    {
+        id: 6,
+        title: 'Primordial (Print)',
+        price: '$210.00',
+        img: '/images/portfolio/primordial.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Primordial" on archival paper.'
+    },
+    {
+        id: 7,
+        title: 'Ruins (Print)',
+        price: '$220.00',
+        img: '/images/portfolio/ruins.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Ruins" on archival paper.'
+    },
+    {
+        id: 8,
+        title: 'Screen Empathy (Print)',
+        price: '$230.00',
+        img: '/images/portfolio/screen-empathy.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Screen Empathy" on archival paper.'
+    },
+    {
+        id: 9,
+        title: 'The Ultimate Portrait (Print)',
+        price: '$240.00',
+        img: '/images/portfolio/tagore-portrait.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "The Ultimate Portrait" on archival paper.'
+    },
+    {
+        id: 10,
+        title: 'Unseen (Print)',
+        price: '$250.00',
+        img: '/images/portfolio/unseen.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Unseen" on archival paper.'
+    },
+    {
+        id: 11,
+        title: 'War Code (Print)',
+        price: '$260.00',
+        img: '/images/portfolio/war-code.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "War Code" on archival paper.'
+    },
+    {
+        id: 12,
+        title: 'Fragments (Print)',
+        price: '$270.00',
+        img: '/images/portfolio/ep.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Fragments" on archival paper.'
+    },
+    {
+        id: 13,
+        title: 'Tangled Strings (Print)',
+        price: '$280.00',
+        img: '/images/portfolio/pp.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Tangled Strings" on archival paper.'
+    },
+    {
+        id: 14,
+        title: 'Monument Park (Print)',
+        price: '$290.00',
+        img: '/images/portfolio/land.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Monument Park" on archival paper.'
+    },
+    {
+        id: 15,
+        title: 'Still Life with Vases (Print)',
+        price: '$300.00',
+        img: '/images/portfolio/still-life-1.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Still Life with Vases" on archival paper.'
+    },
+    {
+        id: 16,
+        title: 'Still Life with Fruits (Print)',
+        price: '$310.00',
+        img: '/images/portfolio/still-life-2.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Still Life with Fruits" on archival paper.'
+    },
+    {
+        id: 17,
+        title: 'Business Burden (Print)',
+        price: '$320.00',
+        img: '/images/portfolio/kk.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Business Burden" on archival paper.'
+    },
+    {
+        id: 18,
+        title: 'Crimson Horizon (Print)',
+        price: '$330.00',
+        img: '/images/portfolio/crimson-horizon.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Crimson Horizon" on archival paper.'
+    },
+    {
+        id: 19,
+        title: 'Glimpse (Print)',
+        price: '$340.00',
+        img: '/images/portfolio/glimpse.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Glimpse" on archival paper.'
+    },
+    {
+        id: 20,
+        title: 'Fragments II (Print)',
+        price: '$350.00',
+        img: '/images/portfolio/fragments-ii.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Fragments II" on archival paper.'
+    },
+    {
+        id: 21,
+        title: 'Core (Print)',
+        price: '$360.00',
+        img: '/images/portfolio/core.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Core" on archival paper.'
+    },
+    {
+        id: 22,
+        title: 'The Voice (Tagore) (Print)',
+        price: '$370.00',
+        img: '/images/portfolio/the-voice.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "The Voice (Tagore)" on archival paper.'
+    },
+    {
+        id: 23,
+        title: 'Urban Canvas (Print)',
+        price: '$380.00',
+        img: '/images/portfolio/urban-canvas.jpg',
+        type: 'Print',
+        description: 'High-quality art print of "Urban Canvas" on archival paper.'
+    }
 ]
 
 // ===== 6. Render Events =====
